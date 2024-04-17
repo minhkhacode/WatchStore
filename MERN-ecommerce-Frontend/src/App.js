@@ -29,6 +29,7 @@ import AdminHome from './pages/AdminHome';
 import AdminProductDetailPage from './pages/AdminProductDetailPage';
 import AdminProductFormPage from './pages/AdminProductFormPage';
 import AdminOrdersPage from './pages/AdminOrdersPage';
+import AdminUsersDetailPage from './pages/AdminUsersDetailPage';
 import { positions, Provider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import StripeCheckout from './pages/StripeCheckout';
@@ -109,6 +110,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedAdmin>
         <AdminOrdersPage></AdminOrdersPage>
+      </ProtectedAdmin>
+    ),
+  },
+  {
+    path: '/admin/users',
+    element: (
+      <ProtectedAdmin>
+        <AdminUsersDetailPage></AdminUsersDetailPage>
       </ProtectedAdmin>
     ),
   },

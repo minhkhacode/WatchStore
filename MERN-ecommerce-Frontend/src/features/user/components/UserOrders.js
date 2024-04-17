@@ -18,7 +18,7 @@ export default function UserOrders() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="mb-6">
       {orders && orders.map((order) => (
         <div key={order.id}>
           <div>
@@ -113,7 +113,7 @@ export default function UserOrders() {
           </div>
         </div>
       ))}
-       {status === 'loading' ? (
+      {status === 'loading' ? (
         <Grid
           height="80"
           width="80"

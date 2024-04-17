@@ -36,7 +36,6 @@ const Footer = () => {
             >
                 <span>© 2020 Appy. All rights reserved.</span>
                 <span>Terms · Privacy Policy</span>
-                <SocialIcons Icons={Icons} />
             </div>
         </footer>
     );

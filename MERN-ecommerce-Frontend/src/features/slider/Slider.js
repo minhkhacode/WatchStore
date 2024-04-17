@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 
 function Slider() {
     const slides = [
         {
-            url: 'https://images.unsplash.com/photo-1511370235399-1802cae1d32f?q=80&w=2055&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            url: 'https://lh3.googleusercontent.com/pw/AP1GczMvEV0SMhlmJ7i12_E58Mhe_ByCduhJpW6vKKhxd0XWGvplS6-J2Y3yomX-plGjJoWpnMG0noN7EK4dvKTLp8rS0v2wani04IC9R3yh3Xvm5Xs4TIxNngrOxxA1zTT13Id31pJM9e46AEmSDV6m4hZR=w2048-h596-s-no?authuser=0',
         },
         {
-            url: 'https://images.unsplash.com/photo-1509941943102-10c232535736?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            url: 'https://lzd-img-global.slatic.net/us/domino/62cedd08bf5fa229c47dc1356712e55c.jpg_2200x2200q80.jpg_.webp',
         },
         {
-            url: 'https://images.unsplash.com/photo-1674208898026-3bca85c5b484?q=80&w=1824&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            url: 'https://donghoduyanh.com/images/slideshow/2024/04/09/compress/tang-dong-ho-treo-tuong_1712637612.png',
+        },
+        {
+            url: 'https://bizweb.dktcdn.net/100/463/752/themes/876147/assets/slider_3.jpg?1699180702642',
         },
 
         {
-            url: 'https://images.unsplash.com/photo-1700650140318-3919c2b41686?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        },
-        {
-            url: 'https://images.unsplash.com/photo-1700649691091-81ef194ce346?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            url: 'https://bizweb.dktcdn.net/100/463/752/themes/876147/assets/slider_1.jpg?1699180702642',
         },
     ];
 
@@ -40,11 +40,19 @@ function Slider() {
         setCurrentIndex(slideIndex);
     };
 
+
+    useEffect(() => {
+        const autoSlide = setInterval(nextSlide, 2000);
+        return () => {
+            clearInterval(autoSlide);
+        }
+    }, [currentIndex])
+
     return (
-        <div className='max-w-[1400px] h-[480px] w-full mx-auto mb-8 py-0 px-4 relative group'>
+        <div className='max-w-[1400px] h-[350px] w-full relative group'>
             <div
                 style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-                className='w-full h-full rounded-2xl bg-center bg-cover duration-200'
+                className='w-full h-full bg-center bg-cover duration-100'
             ></div>
             {/* Left Arrow */}
             <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
@@ -54,7 +62,7 @@ function Slider() {
             <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                 <BsChevronCompactRight onClick={nextSlide} size={30} />
             </div>
-            {/* <div className='flex top-4 justify-center py-2'>
+            <div className='flex text-slate-400 w-full absolute bottom-[10px] justify-center items-center py-2'>
                 {slides.map((slide, slideIndex) => (
                     <div
                         key={slideIndex}
@@ -64,7 +72,7 @@ function Slider() {
                         <RxDotFilled />
                     </div>
                 ))}
-            </div> */}
+            </div>
         </div>
     );
 }

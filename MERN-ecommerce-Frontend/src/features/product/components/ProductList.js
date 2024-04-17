@@ -109,8 +109,9 @@ export default function ProductList() {
     dispatch(fetchCategoriesAsync());
   }, []);
 
+
   return (
-    <div className="bg-white">
+    <div className="bg-white my-6">
       <div>
         <MobileFilter
           handleFilter={handleFilter}

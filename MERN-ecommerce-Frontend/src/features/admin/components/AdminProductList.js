@@ -105,7 +105,7 @@ export default function AdminProductList() {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white mt-6">
       <div>
         <MobileFilter
           handleFilter={handleFilter}
@@ -453,8 +453,8 @@ function Pagination({ page, setPage, handlePage, totalItems }) {
                 onClick={(e) => handlePage(index + 1)}
                 aria-current="page"
                 className={`relative cursor-pointer z-10 inline-flex items-center ${index + 1 === page
-                    ? 'bg-indigo-600 text-white'
-                    : 'text-gray-400'
+                  ? 'bg-indigo-600 text-white'
+                  : 'text-gray-400'
                   } px-4 py-2 text-sm font-semibold  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
               >
                 {index + 1}
@@ -491,26 +491,22 @@ function ProductGrid({ products }) {
                       className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                     />
                   </div>
-                  <div className="mt-4 flex justify-between">
+                  <h3 className="text-sm font-bold text-justify h-[100px] overflow-y-hidden">
+                    <div href={product.thumbnail}>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {product.title}
+                    </div>
+                  </h3>
+                  <div className="mt-0 flex justify-between items-center">
                     <div>
-                      <h3 className="text-sm text-gray-700">
-                        <div href={product.thumbnail}>
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                          {product.title}
-                        </div>
-                      </h3>
                       <p className="mt-1 text-sm text-gray-500">
-                        <StarIcon className="w-6 h-6 inline"></StarIcon>
+                        <StarIcon className="w-6 h-6 inline text-orange-400"></StarIcon>
                         <span className=" align-bottom">{product.rating}</span>
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm block font-medium text-gray-900">
-                        $
-                        {product.discountPrice}
+                      <p className="text-sm text-red-800 block font-medium text-gray-900">
+                        ${product.discountPrice}
                       </p>
                       <p className="text-sm block line-through font-medium text-gray-400">
                         ${product.price}
